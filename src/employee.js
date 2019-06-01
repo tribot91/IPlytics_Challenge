@@ -18,7 +18,7 @@ module.exports = class Employee {
     }
 
     deleteProject(projectToBeDeleted) {
-        this.projects = this.projects.filter(project => project !== projectToBeDeleted)
+        this.projects = this.projects.filter(project => project != projectToBeDeleted)
     }
 
     findProject(project) {

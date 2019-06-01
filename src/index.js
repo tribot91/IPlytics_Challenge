@@ -20,7 +20,9 @@ mpms.updateDuration(newTask2, 2);
 newEmp1.assignProject(newProject1);
 newEmp1.assignProject(newProject2);
 // newEmp1.assignProject(newProject3);
+mpms.deleteTask(newTask2);
 mpms.deleteTask(newTask3);
-mpms.displayTasksForProject(newProject1);
-mpms.totalDaysNeeded([newProject1, newProject2])
+// mpms.deleteProject(newProject1);
+mpms.displayTasksForProject(newProject2);
+mpms.totalDaysNeeded([newProject1, newProject2]);
 mpms.displayEmployees();

@@ -19,7 +19,7 @@ module.exports = class minimalProjectManagementSystem {
     }
 
     displayEmployees() {
-        console.log(JSON.stringify(this.employeeList, 0, 2))
+        // console.log(JSON.stringify(this.employeeList, 0, 2))
 
         return this.employeeList;
     }
@@ -28,7 +28,7 @@ module.exports = class minimalProjectManagementSystem {
         try {
             this.employeeList.map(employee => employee.deleteProject(projectToBeDeleted));
         } catch (error) {
-            console.log("No such project!");
+            console.log("No such project to delete!");
         }
     }
 
@@ -41,13 +41,21 @@ module.exports = class minimalProjectManagementSystem {
     }
 
     displayTasksForProject(project) {
-        // console.log(JSON.stringify(
-        //     this.employeeList.map(employee => employee.projects.filter(p => p == project))
-        //     .filter(e => e.length > 0)[0][0].tasks, 0, 2))
+        //Tasks of each employee with selected project
+        let filteredTasks = this.employeeList.map(employee => employee.projects.filter(p => p == project));
 
-        return this.employeeList.map(employee => employee.projects.filter(p => p == project))
-            .filter(e => e.length > 0)[0][0].task;
+        try {
+            if (filteredTasks.filter(e => e.length > 0).length > 0) {
+                // console.log(JSON.stringify(filteredTasks.filter(e => e.length > 0)[0][0].tasks, 0, 2));
 
+                let projects = filteredTasks.filter(e => e.length > 0)[0][0].task;
+                return projects;
+            } else {
+                throw "No such project to display";
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     totalDaysNeeded(projectList) {

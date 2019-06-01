@@ -46,9 +46,8 @@ module.exports = class minimalProjectManagementSystem {
 
         try {
             if (filteredTasks.filter(e => e.length > 0).length > 0) {
-                // console.log(JSON.stringify(filteredTasks.filter(e => e.length > 0)[0][0].tasks, 0, 2));
-
-                let projects = filteredTasks.filter(e => e.length > 0)[0][0].task;
+                let projects = filteredTasks.filter(e => e.length > 0)[0][0].tasks;
+                console.log(JSON.stringify(projects, 0, 2));
                 return projects;
             } else {
                 throw "No such project to display";

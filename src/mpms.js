@@ -11,8 +11,9 @@ module.exports = class minimalProjectManagementSystem {
                 let newEmp = new Employee(firstName, lastName, supervisor);
                 this.employeeList.push(newEmp);
                 return newEmp;
-            } else
+            } else {
                 throw "Supervisor should be in type of Employee or null!";
+            }
         } catch (error) {
             console.log(error)
         }
@@ -47,7 +48,7 @@ module.exports = class minimalProjectManagementSystem {
         try {
             if (filteredTasks.filter(e => e.length > 0).length > 0) {
                 let projects = filteredTasks.filter(e => e.length > 0)[0][0].tasks;
-                console.log(JSON.stringify(projects, 0, 2));
+                // console.log(JSON.stringify(projects, 0, 2));
                 return projects;
             } else {
                 throw "No such project to display";
@@ -58,9 +59,11 @@ module.exports = class minimalProjectManagementSystem {
     }
 
     totalDaysNeeded(projectList) {
-        // console.log(projectList.map(project => project.endDate - project.startDate).reduce((total, num) => total + num))
-
-        return projectList.map(project => project.endDate - project.startDate)
+        var totalDays = projectList.map(project => project.endDate - project.startDate)
             .reduce((total, num) => total + num);
+
+        // console.log(totalDays);
+
+        return totalDays;
     }
 }

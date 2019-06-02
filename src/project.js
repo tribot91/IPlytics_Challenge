@@ -10,10 +10,12 @@ module.exports = class Project {
     assignTask(task) {
         this.tasks.push(task);
         this.endDate = this.endDate + task.duration;
+        return this.tasks;
     }
 
     deleteTask(taskToBeDeleted) {
         this.tasks = this.tasks.filter(task => task != taskToBeDeleted)
+        return this.tasks
     }
 
     updateDuration(taskToBeChanged, newDuration) {
@@ -23,5 +25,6 @@ module.exports = class Project {
                 taskToBeChanged.duration = newDuration;
             }
         })
+        return this.tasks;
     }
 }

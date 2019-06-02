@@ -8,20 +8,23 @@ module.exports = class Employee {
 
     assignProject(project) {
         try {
-            if (this.projects.length < 2)
+            if (this.projects.length < 2) {
                 this.projects.push(project);
-            else
+                return this.projects;
+            } else {
                 throw "Can not work on more than 2 projects at a time!";
+            }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
     deleteProject(projectToBeDeleted) {
-        this.projects = this.projects.filter(project => project != projectToBeDeleted)
+        this.projects = this.projects.filter(project => project != projectToBeDeleted);
+        return this.projects;
     }
 
     findProject(project) {
-        return this.projects.filter(p => p == project)
+        return this.projects.filter(p => p == project);
     }
 }
